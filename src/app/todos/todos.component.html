@@ -1,0 +1,66 @@
+<!-- <div class="todos">
+    <form [formGroup]="TodoForm">
+        <input
+        type="text"
+        formControlName="item"
+        name="inputTodo"
+        placeholder="Enter Todo..."
+        class="todo-input"
+        [(ngModel)]="inputTodo"
+        > -->
+        <!-- <input *ngIf="!isEditEnabled" type="submit" value="Add Todo" class="todo-submit">
+        <input *ngIf="isEditEnabled" type="submit" value="Update Todo" class="todo-submit"> -->
+        <!-- <button *ngIf="!isEditEnabled" class="todo-submit" (click)="addTodo()" [disabled]="TodoForm.invalid">Add Todo</button>
+        <button *ngIf="isEditEnabled" class="todo-submit" (click)="updateTodo()" [disabled]="TodoForm.invalid">Update Todo</button>
+    </form>
+    <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+    <div  *ngFor="let Todo of Todos; let i = index;" class="todo {{(Todo.completed ? 'done': '')}}" cdkDrag>
+        <div class="id">{{i+1}}</div>
+        <div class="content" (click)="toogledone(i)" >{{Todo.content}}</div>
+        <button *ngIf="Todo.completed == false" class="updateTodo" style="cursor: pointer" title="Nhấn vào để chỉnh sửa" (click)="onEdit(Todo ,i)">Edit</button>
+        <button *ngIf="Todo.completed == true" class="completed" style="cursor: pointer" title="Công việc đã hoàn thành">Completed</button>
+        <button class="delete" style="cursor: pointer" title="Nhấn vào để xóa" (click)="deleteTodo(i)" [disabled]="isEditEnabled">x</button>
+      
+    </div>
+</div>
+</div> -->
+
+<nb-layout > 
+    <nb-layout-header fixed class="layout-header">
+        <h1 style="text-align:center; font-weight: bold; color: antiquewhite; text-shadow: 2px 2px red" >App Todo
+        </h1>
+    </nb-layout-header>   
+    <nb-layout-column  class="layout-column">
+        <nb-card>
+            <nb-card-header>
+                <h3 style="font-weight: bold; color: rgb(245, 137, 137); text-shadow: 1px 1px rgb(10, 89, 235)">Todos List</h3>
+            </nb-card-header>
+            <nb-card-body>
+        <div class="todos">
+            <form [formGroup]="TodoForm">
+                <input
+                type="text"
+                
+                formControlName="item"
+                name="inputTodo"
+                placeholder="Enter Todo..."
+                class="todo-input"
+                [(ngModel)]="inputTodo"
+                >
+                <button *ngIf="!isEditEnabled" class="todo-submit" (click)="addTodo()" [disabled]="TodoForm.invalid">Add Todo</button>
+                <button *ngIf="isEditEnabled" class="todo-submit" (click)="updateTodo()" [disabled]="TodoForm.invalid">Update Todo</button>
+            </form>
+            <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+            <div  *ngFor="let Todo of Todos; let i = index;" class="todo {{(Todo.completed ? 'done': '')}}" cdkDrag>
+                <div class="id">{{i+1}}</div>
+                <div class="content" (click)="toogledone(i)" >{{Todo.content}}</div>
+                <button *ngIf="Todo.completed == false" nbButton status="danger" shape="rectangle" size="tiny" style="cursor: pointer" title="Nhấn vào để chỉnh sửa" (click)="onEdit(Todo ,i)">Edit<nb-icon icon="edit-2-outline"></nb-icon></button>
+                <button *ngIf="Todo.completed == true" nbButton status="success" shape="rectangle" size="tiny" style="cursor: pointer" title="Công việc đã hoàn thành"><nb-icon icon="checkmark-circle-2-outline"></nb-icon>Completed</button>
+                <button nbButton status="danger" shape="rectangle" size="tiny" style="cursor: pointer" title="Nhấn vào để xóa" (click)="deleteTodo(i)" [disabled]="isEditEnabled"><nb-icon icon="trash-2-outline"></nb-icon></button>     
+            </div>
+        </div>
+        </div>
+    </nb-card-body>
+</nb-card> 
+    </nb-layout-column>
+</nb-layout>
